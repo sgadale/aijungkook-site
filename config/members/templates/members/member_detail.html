@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ member.stage_name }}</h2>
+
+<p><strong>Real Name:</strong> {{ member.name }}</p>
+<p><strong>Position:</strong> {{ member.position }}</p>
+
+{% if member.photo %}
+<img src="{{ member.photo }}" alt="{{ member.stage_name }}" style="max-width: 300px;">
+{% endif %}
+
+<p>{{ member.bio }}</p>
+
+<a href="{% url 'member_list' %}">← Back to Members</a>
+{% endblock %}

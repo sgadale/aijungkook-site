@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>BTS Members</h2>
+
+{% if members %}
+<ul>
+    {% for member in members %}
+        <li>
+            <a href="{% url 'member_detail' slug=member.slug %}">
+                <strong>{{ member.stage_name }}</strong>
+            </a>
+            — {{ member.position }}
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No members available.</p>
+{% endif %}
+{% endblock %}

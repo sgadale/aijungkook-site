@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>BTS News</h2>
+
+{% if news_list %}
+<ul>
+    {% for item in news_list %}
+        <li>
+            <a href="{% url 'news_detail' slug=item.slug %}">
+                <strong>{{ item.title }}</strong>
+            </a><br>
+            <small>Published: {{ item.published_date }}</small>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No news available yet.</p>
+{% endif %}
+
+{% endblock %}

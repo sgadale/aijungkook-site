@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Welcome to AIJungkook</h2>
+<p>Your dedicated BTS fan platform for members, news, and events.</p>
+
+<hr>
+
+<h3>BTS Members</h3>
+{% if members %}
+<ul>
+    {% for member in members %}
+        <li>
+            <a href="{% url 'member_detail' slug=member.slug %}">
+                {{ member.stage_name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No members added yet.</p>
+{% endif %}
+
+<hr>
+
+<h3>Featured News</h3>
+{% if featured_news %}
+<ul>
+    {% for item in featured_news %}
+        <li>
+            <a href="{% url 'news_detail' slug=item.slug %}">
+                {{ item.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No featured news available.</p>
+{% endif %}
+
+<hr>
+
+<h3>Upcoming Events</h3>
+{% if upcoming_events %}
+<ul>
+    {% for event in upcoming_events %}
+        <li>
+            <strong>{{ event.title }}</strong> — {{ event.date }} ({{ event.location }})
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No upcoming events.</p>
+{% endif %}
+
+{% endblock %}
